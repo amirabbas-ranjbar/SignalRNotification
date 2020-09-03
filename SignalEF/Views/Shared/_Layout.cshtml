@@ -37,6 +37,36 @@
 
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.4.1.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <script src="~/signalR/Hubs" type="text/javascript"></script>
+    <script>
+        $(function myfunction() {
+            var notifications = $.connection.notificationHub;
+
+            notifications.client.reciveNotifivation = function (broadcastMessage) {
+                var connectionID = $.connection.hub.id;
+                //alert(connectionID);
+                $("#brMsg").text(broadcastMessage);
+            };
+
+            notifications.client.userNotifivation = function (broadcastMessage) {
+                var connectionID = $.connection.hub.id;
+                $("#brMsg").text(broadcastMessage);
+            };
+
+            $.connection.hub.start().done(function () {
+                notifications.server.sendNotification();
+                //alert($.connection.hub.id);
+            }).fail(function (e) {
+                //alert(e);
+            });``
+
+        });
+
+    </script>
+
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
