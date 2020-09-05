@@ -15,8 +15,6 @@ namespace SignalEF.Hubs
     public class NotificationHub : Hub
     {
         public string broadcastMessage = string.Empty;
-        //public string connectionString = ConfigurationManager.ConnectionStrings["BroadcastTestEntities"].ConnectionString;
-
         [HubMethodName("sendNotification")]
         public async Task<string> sendNotification()
         {

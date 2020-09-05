@@ -42,7 +42,7 @@
     <script src="~/signalR/Hubs" type="text/javascript"></script>
     <script>
         $(function myfunction() {
-            var notifications = $.connection.notificationHub;
+            var notifications = $.connection.devicesSyncHub;
 
             notifications.client.reciveNotifivation = function (broadcastMessage) {
                 var connectionID = $.connection.hub.id;
